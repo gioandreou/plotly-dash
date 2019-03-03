@@ -4,8 +4,11 @@ import dash_html_components as html
 
 app = dash.Dash()
 
+colors = {'background':'#111111','text':'#7fdbff'}
+
 app.layout = html.Div(children=[
-    html.H1('Hello dash!'),
+    html.H1('Hello dash!',style={'textAlign':'center',
+                                'color':colors['text']}),
     html.Div('dash: web dsf'),
     dcc.Graph(id='example',figure={'data':[
         {'x':[1,2,3],'y':[4,1,2],'type':'bar','name':'SF'},
@@ -19,9 +22,13 @@ app.layout = html.Div(children=[
         {'x':[1,24,345],'y':[425,1,2],'type':'line','name':'NYdasC'}
     ],
     'layout':{
-        'title':'BARsd PLOTS'
+        'plot_bgcolor':colors['background'],
+        'title':'BARsd PLOTS',
+        'paper_bgcolor':colors['background'],
+        'font':{'color':colors['text']}
     }})
-])
+],style={'backgroundColor':colors['background']}
+)
 
 if __name__=='__main__':
     app.run_server()
